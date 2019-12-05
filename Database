@@ -1,0 +1,220 @@
+-- phpMyAdmin SQL Dump
+-- version 4.4.14
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: 05 Des 2019 pada 16.04
+-- Versi Server: 5.6.26
+-- PHP Version: 5.6.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `sm`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `akun`
+--
+
+CREATE TABLE IF NOT EXISTS `akun` (
+  `id` int(11) NOT NULL,
+  `usernames` varchar(16) NOT NULL,
+  `passwords` varchar(16) NOT NULL,
+  `theme` varchar(15) NOT NULL,
+  `Nama_kafe` varchar(25) NOT NULL,
+  `alamat` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `kontak` varchar(14) NOT NULL,
+  `instagram` varchar(20) NOT NULL,
+  `Jenis` varchar(20) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `akun`
+--
+
+INSERT INTO `akun` (`id`, `usernames`, `passwords`, `theme`, `Nama_kafe`, `alamat`, `email`, `kontak`, `instagram`, `Jenis`) VALUES
+(1, 'admin', 'root', 'midnight', '<b>Pure</b> Machine', 'Jl Besi No 1 Kav 1 Malang', 'nvlqmn@gmail.com', '+6283834669930', '@nvlqmn', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `kategori`
+--
+
+CREATE TABLE IF NOT EXISTS `kategori` (
+  `id_kategori` int(11) NOT NULL,
+  `nama` varchar(25) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `kategori`
+--
+
+INSERT INTO `kategori` (`id_kategori`, `nama`) VALUES
+(1, 'Minuman Dingin'),
+(2, 'Minuman Panas'),
+(3, 'Snack'),
+(4, 'Makanan'),
+(7, 'Minuman Keras');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `komposisi`
+--
+
+CREATE TABLE IF NOT EXISTS `komposisi` (
+  `id_bahan` int(8) NOT NULL,
+  `Nama` varchar(25) NOT NULL,
+  `Harga` int(8) NOT NULL,
+  `Stok` float NOT NULL,
+  `Satuan` varchar(10) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `komposisi`
+--
+
+INSERT INTO `komposisi` (`id_bahan`, `Nama`, `Harga`, `Stok`, `Satuan`) VALUES
+(1, 'Kopi', 25500, 250, 'gram'),
+(2, 'Gula', 12500, 1000, 'gram'),
+(3, 'SKM', 11000, 495, 'gram'),
+(4, 'Fresh Milk', 17500, 1000, 'ml'),
+(5, 'UHT Milk', 16500, 1000, 'ml'),
+(6, 'Chocolate VH', 19000, 250, 'gram'),
+(7, 'Milo', 17000, 220, 'gram'),
+(8, 'Soda', 31000, 12, 'Botol'),
+(9, 'Syrup Marjan', 19500, 1000, 'ml'),
+(10, 'Teh Naga', 2000, 15, 'gram'),
+(11, 'Teh 99', 500, 15, 'gram'),
+(12, 'Thai Tea Green', 65000, 500, 'gram'),
+(13, 'Thai Tea Black', 55000, 500, 'gram'),
+(14, 'Bubble Tapioka', 55000, 1000, 'gram'),
+(15, 'Bubuk Vanilla', 50000, 1000, 'gram'),
+(16, 'Kopi Kasar', 30000, 500, 'gram'),
+(17, 'Bubuk Ice Cream Haan', 12000, 250, 'gram'),
+(18, 'Lemon', 7000, 1, 'buah'),
+(19, 'Wafer', 2000, 8, 'buah'),
+(20, 'Mie', 2000, 1, 'bungkus'),
+(21, 'Telor', 11000, 8, 'butir'),
+(22, 'Pentol', 5000, 250, 'gram'),
+(23, 'Bombay', 4500, 1, 'buah'),
+(24, 'Bawang Putih', 7000, 75, 'siung'),
+(25, 'Bawang Merah', 6000, 15, 'butir'),
+(26, 'Merica', 5000, 100, 'gram'),
+(27, 'Garam', 5000, 250, 'gram'),
+(28, 'Masako', 5000, 110, 'gram'),
+(29, 'Kecap Bango', 9500, 1, 'bungkus'),
+(30, 'Saos Sambal', 13500, 1000, 'gram'),
+(31, 'Bawang Goreng', 10000, 1, 'bungkus'),
+(32, 'Kerupuk Pangsit', 5000, 1, 'bungkus'),
+(33, 'Minyak', 22000, 2000, 'ml'),
+(34, 'Sawi', 1500, 1, 'ikat'),
+(35, 'Andewi', 4500, 1, 'ikat'),
+(36, 'Cao Bubuk', 32500, 10, ''),
+(37, 'Meses', 5000, 250, 'gram'),
+(38, 'Tomat', 4000, 250, 'gram'),
+(39, 'Lombok', 10000, 500, 'gram'),
+(40, 'Es Batu', 750, 3, ''),
+(41, 'Teh Bunga Telang', 17000, 20, ''),
+(42, 'F.F', 26000, 1000, ''),
+(43, 'Cireng', 13500, 2, ''),
+(44, 'Linggar Jati', 5500, 1, 'botol'),
+(45, 'Syrup Denali', 80000, 1, 'botol'),
+(46, 'Galon', 5000, 19000, 'ml');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `menu`
+--
+
+CREATE TABLE IF NOT EXISTS `menu` (
+  `Id_menu` int(8) NOT NULL,
+  `Nama` varchar(25) NOT NULL,
+  `id_kategori` int(11) NOT NULL,
+  `Harga` float NOT NULL,
+  `Pokok` float NOT NULL,
+  `Resep` text NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `menu`
+--
+
+INSERT INTO `menu` (`Id_menu`, `Nama`, `id_kategori`, `Harga`, `Pokok`, `Resep`) VALUES
+(9, 'moccachiato', 2, 10000, 4022.28, '6:12,1:10,2:17,3:17,'),
+(10, 'Kopi Hitam', 2, 6000, 3186.5, '1:12,2:37,'),
+(11, 'Es Milo', 1, 10000, 3606.57, '3:14,7:20,40:1,'),
+(12, 'Susu Panas', 2, 12000, 2902.22, '4:40,2:12,3:10,5:20,'),
+(13, 'Es Kopi Waw', 1, 15000, 7529.45, '1:12,6:10,7:20,4:100,40:1,19:2,'),
+(15, 'Es Green Tea', 1, 12000, 7005, '2:12,12:30,4:50,5:20,40:1,'),
+(16, 'Es Cappucino', 1, 12000, 4150, '16:20,4:60,2:12,40:1,'),
+(17, 'Gelas', 4, 10000, 0, '');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `akun`
+--
+ALTER TABLE `akun`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `kategori`
+--
+ALTER TABLE `kategori`
+  ADD PRIMARY KEY (`id_kategori`);
+
+--
+-- Indexes for table `komposisi`
+--
+ALTER TABLE `komposisi`
+  ADD PRIMARY KEY (`id_bahan`);
+
+--
+-- Indexes for table `menu`
+--
+ALTER TABLE `menu`
+  ADD PRIMARY KEY (`Id_menu`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `akun`
+--
+ALTER TABLE `akun`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `kategori`
+--
+ALTER TABLE `kategori`
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `komposisi`
+--
+ALTER TABLE `komposisi`
+  MODIFY `id_bahan` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=47;
+--
+-- AUTO_INCREMENT for table `menu`
+--
+ALTER TABLE `menu`
+  MODIFY `Id_menu` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
