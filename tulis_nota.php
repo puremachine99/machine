@@ -22,20 +22,6 @@ function colors($tema)
     return "hitam";
   }
 }
-function bahan()
-{
-  ?>
-  <option value="">--Pilih Bahan--</option>
-  <?php
-    $sql = "SELECT * FROM komposisi";
-    require "koneksi.php";
-    $res = mysqli_query($conn, $sql);
-    while ($row = mysqli_fetch_assoc($res)) {
-      ?>
-    <option value="<?= $row['id_bahan'] ?>"><?= $row['Nama'] ?></option>
-  <?php
-    }
-  }
 
   function kategori()
   {
@@ -66,7 +52,8 @@ function bahan()
       $menu = $_POST['orderan'];
       $bayar = $_POST['bayar'];
       $subtotal = $_POST['total'];
-
+      $no = no_nota();
+      $tgl = date("d/m/Y");
       $a = explode(",", $menu);
       $jml = count($a);
       for ($i = 0; $i < $jml; $i++) {
@@ -76,6 +63,8 @@ function bahan()
         require "koneksi.php";
         $res = mysqli_query($conn, $sql);
         while ($row = mysqli_fetch_assoc($res)) {
+          mysqli_query($conn,"INSERT INTO terjual VALUES('$no','$id','$b[1]','$tgl')");
+
           ?>
       <tr>
         <td><span class="hitam"><?= $i + 1 ?></span></td>
@@ -88,6 +77,8 @@ function bahan()
 <?php
     }
   }
+  require "koneksi.php";
+  mysqli_query($conn,"INSERT INTO nota VALUES('$no','$tgl','$bayar','$subtotal')");
 }
 function total()
 {
@@ -96,13 +87,14 @@ function total()
 
   return $bayar . "|" . $subtotal;
 }
-function nota(){
-  $tanggal = date("dmy");
-  $sql = "SELECT COUNT(tanggal) as jml FROM nota WHERE tanggal = '$tanggal' ORDER BY tanggal";
+function no_nota(){
+  $tanggal = date("d/m/Y");
+  $tgl = date("dmy");
+  $sql = "SELECT COUNT(tanggal) as jml FROM nota WHERE tanggal = '$tanggal'";
   require "koneksi.php";
   $res = mysqli_query($conn,$sql);
   while($row = mysqli_fetch_assoc($res)){
-    return $tanggal.$row['jml']+1;
+    return $tgl.$row['jml']+1;
   }
 }
 
@@ -111,7 +103,7 @@ function nota(){
 
     <div class="content-wrapper">
       <section class="content-header">
-      <?=nota()?>
+      
       </section>
 
       <!-- Main content -->
@@ -121,7 +113,7 @@ function nota(){
           <div class="col-xs-12">
             <h2 class="page-header">
               <i class="glyphicon glyphicon-tree-deciduous"></i> <?= call("Nama_kafe") ?>
-              <small class="pull-right">Date: <?= date("d/m/Y") ?></small>
+              <small class="pull-right">Date: <?= no_nota()//date("d/m/Y") ?></small>
             </h2>
           </div>
           <!-- /.col -->
@@ -143,7 +135,7 @@ function nota(){
           <!-- /.col -->
           <div class="col-sm-4 invoice-col">
             <b></b><br>
-            <b>Order ID:</b> 4F3S8J<br>
+            <b>Order ID:</b> <?=no_nota()?><br>
             <b>Payment Due:</b> <?= date("d/m/Y") ?><br>
           </div>
           <!-- /.col -->

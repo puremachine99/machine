@@ -26,7 +26,7 @@ $res = mysqli_query($conn, $login);
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Log in</title>
+    <title>IPOSMachine | Log in</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
@@ -84,7 +84,8 @@ $res = mysqli_query($conn, $login);
 
     .no-scroll {
         overflow: hidden;
-        background-image: url('img/bg-login.jpg');
+        background-image: url('img/bg-login2.jpg');    
+        background-size:100%;
         background-position-y: -100px;
     }
 </style>
@@ -93,7 +94,7 @@ $res = mysqli_query($conn, $login);
     <div id="slide" class="login-box">
         <div class="login-logo">
             <a href="#">
-                <font color="white">Kedai <b>Sudi Mampir</b></font>
+                <font color="white">POS <b>Machine</b></font>
             </a>
         </div>
         <!-- /.login-logo -->

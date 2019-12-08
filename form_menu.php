@@ -24,7 +24,7 @@ function colors($tema)
 function bahan()
 {
   ?>
-  <option value="">--Pilih Bahan--</option>
+  <option value="">Pilih Bahan</option>
   <?php
     $sql = "SELECT * FROM komposisi";
     require "koneksi.php";
